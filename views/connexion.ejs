@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>LEVEL5 - Connexion</title>
+ </head>
+ <body>
+  <h1>LEVEL5</h1>
+  <p>Connexion à ma collection</p>
+
+  <% if (erreur) { %>
+  <p style="color: red"><%= erreur %></p>
+  <% } %>
+
+  <form action="/connexion" method="post">
+   Nom : <input type="text" name="nom" required autocomplete="username" />
+   Mot de passe : <input type="password" name="mdp" required autocomplete="current-password" />
+   <button type="submit">Se connecter</button>
+  </form>
+
+  <p><a href="/inscription">Créer un compte</a></p>
+ </body>
+</html>

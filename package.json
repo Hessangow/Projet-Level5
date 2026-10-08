@@ -1,0 +1,16 @@
+{
+  "name": "level5-tableau",
+  "version": "4.0.0",
+  "main": "server.js",
+  "scripts": { "start": "node --env-file=.env server.js" },
+  "engines": { "node": ">=20.6.0" },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-session": "^2.1.0",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "express-rate-limit": "^7.4.0",
+    "helmet": "^8.0.0",
+    "mysql2": "^3.11.0"
+  }
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>LEVEL5 TABLEAU</title>
+  <style>
+   table {border-collapse: collapse; margin-top: 1em;}
+   th, td {border: 1px solid #999; padding: 4px 6px; text-align: left;}
+   th {text-align: center;}
+   form.inline {display: inline; margin: 0;}
+  </style>
+ </head>
+ <body>
+  <h1>LEVEL5</h1>
+  <p>Ma collection de jeux vidéo</p>
+
+  <form class="inline" action="/deconnexion" method="post">
+   Connecté : <strong><%= nom %></strong>
+   <button type="submit">Déconnexion</button>
+  </form>
+
+  <form action="/jeux/ajouter" method="post">
+   Titre : <input type="text" name="titre" required />
+   Plateforme : <input type="text" name="plateforme" placeholder="PC, PS5..." />
+   Statut :
+   <select name="statut">
+    <option value="A jouer">À jouer</option>
+    <option value="En cours">En cours</option>
+    <option value="Termine">Terminé</option>
+   </select>
+   Heures : <input type="number" name="heures" min="0" />
+   Note /5 : <input type="number" name="note" min="0" max="5" style="width: 3.5em" />
+   <button type="submit">Enregistrer</button>
+   <button type="reset">Annuler</button>
+  </form>
+
+  <table>
+   <tr>
+    <th>Titre</th>
+    <th>Plateforme</th>
+    <th>Statut</th>
+    <th>Heures</th>
+    <th>Note</th>
+    <th>Actions</th>
+   </tr>
+   <% jeux.forEach(function(jeu) { %>
+   <tr>
+    <td><%= jeu.titre %></td>
+    <td><%= jeu.plateforme %></td>
+    <td><%= jeu.statut %></td>
+    <td><%= jeu.heures || 0 %> h</td>
+    <td><%= jeu.note ? jeu.note + '/5' : '-' %></td>
+    <td>
+     <form class="inline" action="/jeux/modif/<%= jeu.id %>" method="get"><button>Modifier</button></form>
+     <form class="inline" action="/jeux/supprimer/<%= jeu.id %>" method="post"><button>Supprimer</button></form>
+    </td>
+   </tr>
+   <% }); %>
+  </table>
+ </body>
+</html>

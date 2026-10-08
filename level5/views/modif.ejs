@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>Modifier</title>
+ </head>
+ <body>
+  <h1>Modifier le jeu</h1>
+  <form action="/jeux/modifValide" method="post">
+   <input type="hidden" name="id" value="<%= id %>" />
+   <p>
+    <input type="text" name="titre" value="<%= jeu.titre %>" />
+    <input type="text" name="plateforme" value="<%= jeu.plateforme %>" />
+    <select name="statut">
+     <% ['A jouer', 'En cours', 'Termine'].forEach(function(s) { %>
+     <option <%= jeu.statut == s ? 'selected' : '' %>><%= s %></option>
+     <% }); %>
+    </select>
+    <input type="number" name="heures" value="<%= jeu.heures %>" />
+    <input type="number" name="note" value="<%= jeu.note %>" />
+    <input type="submit" value="Valider" />
+   </p>
+  </form>
+ </body>
+</html>
